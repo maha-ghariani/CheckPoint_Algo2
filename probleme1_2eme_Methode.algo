@@ -1,0 +1,31 @@
+ALGORITHM somme_elements_distincts
+VAR
+    Tab1 : ARRAY_OF INTEGER[50];
+    Tab2 :ARRAY_OF INTEGER[50];
+    Tab : ARRAY_OF INTEGER[100];
+    x:HASH_TABLE<Integer,Integer>;
+    i,count,j,sum:Integer;
+BEGIN
+    sum=0;
+    Tab1=new Set([3, 1, 7, 9]);
+    Tab2=new Set([2, 4, 1, 9, 3]);
+    TAB:=Tab1.Concat(Tab2);
+    FOR i FROM 0 TO Tab.length STEP 1  DO
+        
+        IF (x.lookup(Tab[i])=true) THEN
+            count=x.get(Tab[i])+1;
+            x.insert(Tab[i],count);
+        ELSE
+            x.insert(Tab[i],1);
+        END_IF
+
+    END_FOR
+
+    FOR j FROM 0 TO Tab.length STEP 1  DO
+        
+        IF (x.lookup(Tab[j])=1) THEN
+            sum:=sum+Tab[j];
+        END_IF
+
+    END_FOR
+    write("somme des elements distincts:",sum);

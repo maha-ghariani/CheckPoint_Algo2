@@ -1,0 +1,28 @@
+ALGORITHM somme_distinct
+VAR
+    x : ARRAY_OF INTEGER[50];
+    y : ARRAY_OF INTEGER[50];
+    i,j,f,k,sum:INTEGER;
+BEGIN  
+    sum=0;
+    x=new Set([3, 1, 7, 9]);
+    y=new Set([2, 4, 1, 9, 3]);
+    FOR i FROM 0 TO x.length STEP 1  DO
+        k=0;
+        WHILE (k<=y.length) DO
+            IF (x[i]=y[k]) THEN
+                x[i]=0;
+                y[k]=0;
+            END_IF
+            k:=k+1;
+        END_WHILE
+    END_FOR
+    sum=0;
+    FOR f FROM 0 TO x.length STEP 1  DO
+        sum=sum+x[f];
+    END_FOR
+    FOR j FROM 0 TO y.length STEP 1  DO
+        sum=sum+y[j];
+    END_FOR
+    write("somme des elements distincts:",sum);
+END
